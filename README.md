@@ -1,6 +1,6 @@
 # VocalcomProject
 
-This project generate a matrix that blinks randomly.
+This project generates a matrix that blinks randomly.
 
 ## Development server
 
