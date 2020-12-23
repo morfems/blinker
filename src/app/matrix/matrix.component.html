@@ -1,0 +1,7 @@
+<div class="row" *ngFor="let row of matrix">
+  <app-blinker
+    *ngFor="let point of row"
+    [active]="point.isBlinking"
+    [color]="point.color"
+  ></app-blinker>
+</div>
