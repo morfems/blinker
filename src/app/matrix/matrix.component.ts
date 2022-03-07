@@ -13,8 +13,8 @@ import { Point } from './point';
 })
 export class MatrixComponent implements OnInit {
   matrix: Point[][];
-  readonly dueTime = 0;
-  readonly period = 3000;
+  private readonly dueTime = 0;
+  private readonly period = 3000;
 
   constructor(private route: ActivatedRoute) { }
 

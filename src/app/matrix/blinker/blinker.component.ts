@@ -14,10 +14,9 @@ export class BlinkerComponent implements OnInit {
   @Input() active: boolean;
   @Input() color: string;
 
-  private blinker$: Observable<string>;
+  private readonly blinker$ = this.getBlinker();
 
   ngOnInit() {
-    this.blinker$ = this.getBlinker();
     this.blink();
   }
 
