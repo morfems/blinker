@@ -33,7 +33,7 @@ export class BlinkerComponent implements OnInit {
   }
 
   /**
-   * Blinks while this.active is true
+   * Blinks when this.active becomes true
    */
   blink(): void {
     this.blinker$
