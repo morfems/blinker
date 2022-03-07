@@ -2,6 +2,11 @@ import { Component, HostBinding, Input, OnChanges, SimpleChanges } from "@angula
 import { merge, Observable, timer } from "rxjs";
 import { mapTo, skipWhile } from "rxjs/operators";
 
+enum Visibility {
+  Visible = "visible",
+  Hidden = "hidden",
+}
+
 @Component({
   selector: "app-blinker",
   templateUrl: "./blinker.component.html",
@@ -9,7 +14,7 @@ import { mapTo, skipWhile } from "rxjs/operators";
 })
 export class BlinkerComponent implements OnChanges {
   @HostBinding("style.visibility")
-  private visibility = "hidden";
+  private visibility = Visibility.Hidden;
 
   @Input() active: boolean;
   @Input() color: string;
@@ -31,7 +36,7 @@ export class BlinkerComponent implements OnChanges {
     const show$ = timer(visibleMS, inVisibleMS * 2);
     const hide$ = timer(inVisibleMS, inVisibleMS * 2);
 
-    return merge(show$.pipe(mapTo("visible")), hide$.pipe(mapTo("hidden")));
+    return merge(show$.pipe(mapTo(Visibility.Visible)), hide$.pipe(mapTo(Visibility.Hidden)));
   }
 
   /**
