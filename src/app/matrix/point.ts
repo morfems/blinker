@@ -4,3 +4,5 @@ export interface Point {
     color: string;
     isBlinking: boolean;
 }
+
+export type Matrix = Point[][];

@@ -4,7 +4,7 @@ import { takeWhile } from "rxjs/operators";
 import { timer } from "rxjs";
 import { unique_colors as uniqueColors } from "unique-colors";
 import { range, without, flatten } from "lodash-es";
-import { Point } from './point';
+import { Matrix, Point } from './point';
 
 @Component({
   selector: "app-matrix",
@@ -12,7 +12,7 @@ import { Point } from './point';
   styleUrls: ["./matrix.component.sass"],
 })
 export class MatrixComponent implements OnInit {
-  matrix: Point[][];
+  matrix: Matrix;
   private readonly dueTime = 0;
   private readonly period = 3000;
 
@@ -55,7 +55,7 @@ export class MatrixComponent implements OnInit {
   /**
    * Creates a matrix of points
    */
-  getMatrix(nbColumns: number, nbRows: number, colors: string[]): Point[][] {
+  getMatrix(nbColumns: number, nbRows: number, colors: string[]): Matrix {
     const getPoint = (x: number, y: number): Point => ({ x, y, color: colors[x], isBlinking: false });
     const getPoints = (x: number): Point[] => range(nbColumns).map((y) => getPoint(x, y));
 
