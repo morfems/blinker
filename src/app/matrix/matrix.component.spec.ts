@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { BlinkerComponent } from './blinker/blinker.component';
 
@@ -9,7 +9,7 @@ describe('MatrixComponent', () => {
   let component: MatrixComponent;
   let fixture: ComponentFixture<MatrixComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [MatrixComponent, BlinkerComponent],
       providers: [{
