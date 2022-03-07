@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from "@angular/core";
+import { Component, HostBinding, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { merge, Observable, timer } from "rxjs";
 import { mapTo, skipWhile } from "rxjs/operators";
 
@@ -7,7 +7,7 @@ import { mapTo, skipWhile } from "rxjs/operators";
   templateUrl: "./blinker.component.html",
   styleUrls: ["./blinker.component.sass"],
 })
-export class BlinkerComponent implements OnInit {
+export class BlinkerComponent implements OnChanges {
   @HostBinding("style.visibility")
   private visibility = "hidden";
 
@@ -16,8 +16,10 @@ export class BlinkerComponent implements OnInit {
 
   private readonly blinker$ = this.getBlinker();
 
-  ngOnInit() {
-    this.blink();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.active?.currentValue) {
+      this.blink();
+    }
   }
 
   /**
@@ -37,8 +39,7 @@ export class BlinkerComponent implements OnInit {
    */
   blink(): void {
     this.blinker$
-      .pipe(skipWhile(() => !this.active))
-      .subscribe((newVisiblity: string) => (this.visibility = newVisiblity));
+      .subscribe((newVisiblity: Visibility) => (this.visibility = newVisiblity));
   }
 
   /**
