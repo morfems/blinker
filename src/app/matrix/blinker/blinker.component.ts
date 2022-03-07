@@ -1,6 +1,6 @@
-import { Component, HostBinding, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { merge, Observable, timer } from "rxjs";
-import { mapTo, skipWhile } from "rxjs/operators";
+import { mapTo } from "rxjs/operators";
 
 enum Visibility {
   Visible = "visible",
@@ -11,6 +11,7 @@ enum Visibility {
   selector: "app-blinker",
   templateUrl: "./blinker.component.html",
   styleUrls: ["./blinker.component.sass"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlinkerComponent implements OnChanges {
   @HostBinding("style.visibility")
