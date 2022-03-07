@@ -3,7 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { takeWhile } from "rxjs/operators";
 import { timer } from "rxjs";
 import { unique_colors as uniqueColors } from "unique-colors";
-import { range, without, flatten } from "lodash";
+import { range, without, flatten } from "lodash-es";
 import { Point } from './point';
 
 @Component({
